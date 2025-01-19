@@ -1,0 +1,21 @@
+{% extends "./admin/admin_base.html" %}
+{% block title %}{{ user.firstname }} {{user.lastname}}{% endblock %}
+{% block adminbody %}
+<div class="container my-5" style="width: 60%; margin: auto;">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <div class="p-5" style="width: 320px; height: auto; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <img src="../../static/assets/uploads/{{ user.user_image }}" alt="Jewell"
+                     style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="product-name" style="font-size: 2rem; font-weight: bold; color: #333;">{{ user.firstname }} {{user.lastname}}</h2>
+            <p class="product-price" style="font-size: 1.5rem;">Email: {{ user.email }}</p>
+            <p class="product-price" style="font-size: 1.5rem;">Phone: {{ user.phone_number }}</p>
+            <p class="product-price" style="font-size: 1.5rem;">Gender: {{ user.gender }}</p>
+            <p class="product-price" style="font-size: 1.5rem;">Country: {{ user.country }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

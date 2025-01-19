@@ -1,0 +1,40 @@
+{% extends './admin/admin_base.html' %}
+{% block adminbody %}
+<div class="container">
+    <h2 class="text-center mb-4">Customer Testimonials</h2>
+    <div class="mb-4 text-center">
+        <a href="{{ url_for('testimonials', filter_type='all') }}" class="btn btn-secondary btn-sm mx-2">All</a>
+        <a href="{{ url_for('testimonials', filter_type='approve') }}" class="btn btn-secondary btn-sm mx-2">Approve</a>
+        <a href="{{ url_for('testimonials', filter_type='approved') }}" class="btn btn-secondary btn-sm mx-2">Approved</a>
+    </div>
+
+    <div class="row" style="width: 50%; margin: auto;">
+        {% for testimonial in testimonials %}
+                <div class="shadow-sm rounded-lg border-3 mb-2" style="border: 1px solid gray; border-radius: 10px;">
+                    <div class="card-body p-2">
+                        <p class="card-text">{{ testimonial.content }}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ url_for('static', filename='assets/uploads/' + testimonial.user.user_image) }}"
+                                     alt="{{ testimonial.user.firstname }} {{ testimonial.user.lastname }}"
+                                     class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                                <small class="text-muted">- {{ testimonial.user.firstname }} {{ testimonial.user.lastname }}</small>
+                            </div>
+                            {% if not testimonial.is_approved %}
+                                <a href="{{ url_for('approve_testimonial', testimonial_id=testimonial.id) }}"
+                                   class="btn btn-primary btn-sm">Approve</a>
+                            {% else %}
+                                <span class="badge bg-success">Approved</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+        {% if not testimonials %}
+        <div class="text-center text-muted p-5 mt-5 mb-5">
+            No testimonials available at the moment.
+        </div>
+        {% endif %}
+        </div>
+</div>
+{% endblock %}

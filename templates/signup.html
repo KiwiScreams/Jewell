@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block body %}
+    <div class="mt-5 p-4 rounded mx-auto login" style="width: 80%;">
+      <form method="post" enctype="multipart/form-data">
+        <div class="row" style="width: 100%">
+             {% if error_message %}
+                <div class="alert alert-danger">
+                    {{ error_message }}
+                </div>
+            {% endif %}
+            {% for errors in register_form.errors.values() %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                 {% for error in errors %}
+                {{ error}}
+                <br>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+          {{ register_form.hidden_tag() }}
+          <h2 class="text-center mb-5 text-white">Sign Up</h2>
+          <div class="col-md-6 mx-auto mb-5 upload-container">
+              <div class="upload">
+                {{ register_form.user_image.label(class="text-white") }}
+                {{ register_form.user_image(class="custom-input custom-file", onchange="previewImage(event)") }}
+              <button type="button" onclick="clearImage()" class="button custom-btn">Clear</button>
+              <img id="imagePreview" class="image-preview" src="#" alt="Image Preview" style="display:none; width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-between mx-auto">
+              <div class="col-md-5 mb-2">
+                  {{register_form.firstname.label(class="text-white")}}
+                  {{register_form.firstname(class="custom-input", placeholder="John")}}
+              </div>
+              <div class="col-md-5 mb-3">
+                  {{register_form.lastname.label(class="text-white")}}
+                  {{register_form.lastname(class="custom-input", placeholder="Doe")}}
+              </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-between mx-auto">
+              <div class="col-md-5 mb-3">
+                  {{register_form.email.label(class="text-white")}}
+                  {{register_form.email(class="custom-input", placeholder="JohnDoe@gmail.com")}}
+              </div>
+              <div class="col-md-5 mb-3">
+                  {{register_form.phone_number.label(class="text-white")}}
+                  {{register_form.phone_number(class="custom-input", placeholder="557 58 58 59")}}
+              </div>
+          </div>
+          <div class="col-md-6 d-flex justify-content-between mx-auto">
+            <div class="col-md-5 mb-3">
+                {{ register_form.password.label(class="text-white") }}
+                <div class="position-relative">
+                {{ register_form.password(class="custom-input", placeholder="Enter your password") }}
+                    <i class="fa-regular fa-eye eye position-absolute togglePassword"></i>
+                </div>
+            </div>
+            <div class="col-md-5 mb-3 position-relative">
+                {{ register_form.repeat_password.label(class="text-white") }}
+                <div class="position-relative">
+                {{ register_form.repeat_password(class="custom-input", placeholder="Repeat your password") }}
+                    <i class="fa-regular fa-eye eye position-absolute toggleRepeatPassword"></i>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6 mx-auto mb-3">
+              {{register_form.gender.label(class="text-white")}}
+              {{register_form.gender(class="text-white")}}
+          </div>
+          <div class="col-md-6 mx-auto mb-3">
+              {{register_form.country.label(class="text-white bg-black")}}
+              {{register_form.country(class="custom-input")}}
+          </div>
+          <div class="col-md-6 mx-auto mt-4">
+              {{ register_form.submit(class="btn custom-btn w-100") }}
+          </div>
+      </form>
+    </div>
+<script src="{{ url_for('static', filename='scripts/togglePassword.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/userImage.js') }}"></script>
+{% endblock %}

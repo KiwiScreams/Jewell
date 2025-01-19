@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{user.firstname}} {{user.lastname}}{% endblock %}
+{% block body %}
+<br>
+<br>
+<div class="testimonials-panel" id="testimonialsPanel">
+    <form method="POST" action="{{ url_for('submit_testimonial') }}">
+        <i class="fa-solid fa-x text-white rotate" id="closeBtn"></i>
+        <h2 class="text-center mb-4 text-white">We Value Your Feedback!</h2>
+        {{ testimonial_form.hidden_tag() }}
+        <div class="col-md-6 mb-2 mx-auto">
+            {{testimonial_form.content(class="custom-input text-area", placeholder="Write your testimonial here...")}}
+        </div>
+        <div class="text-center">
+            {{ testimonial_form.submit(class="custom-btn btn mt-2 text-center") }}
+        </div>
+    </form>
+</div>
+<div class="container-user" style="background: #000; border: 1px solid #fff;">
+    <div class="profile-header">
+        <img src="../../static/assets/uploads/{{ user.user_image }}" alt="User Image">
+        <div>
+            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+            <p>Welcome to your profile page!</p>
+        </div>
+    </div>
+    <div class="profile-details">
+        <div style="background: #000;">
+            <h2>Personal Information</h2>
+            <p><strong>First Name:</strong> {{ user.firstname }}</p>
+            <p><strong>Last Name:</strong> {{ user.lastname }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+        <div style="background: #000;">
+            <h2>Location & Identity</h2>
+            <p><strong>Country:</strong> {{ user.country }}</p>
+            <p><strong>Gender:</strong> {{ user.gender }}</p>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='scripts/x.js') }}"></script>
+{% endblock %}

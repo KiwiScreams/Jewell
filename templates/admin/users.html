@@ -1,0 +1,32 @@
+{% extends "./admin/admin_base.html" %}
+{% block title %}Admin Dashboard | Users{% endblock %}
+{% block adminbody %}
+<div class="container" style="width: 60%; margin: auto;">
+    <h2 class="text-center mb-5">User Profiles</h2>
+
+    {% if users %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for user in users %}
+            <div class="col">
+                <div class="card shadow-lg border-0 rounded-3">
+                    <img src="{{ url_for('static', filename='assets/uploads/' + user.user_image) }}"
+                         class="card-img-top rounded-circle mx-auto mt-3" alt="{{ user.firstname }} {{ user.lastname }}"
+                         style="width: 80px; height: 80px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ user.firstname }} {{ user.lastname }}</h5>
+                        <p class="card-text text-muted">{{ user.email }}</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="/admin/user/{{ user.id }}" class="btn btn-primary btn-sm me-2">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    <div class="text-center text-muted p-5 mt-5 mb-5">
+        No users available at the moment.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

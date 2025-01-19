@@ -1,0 +1,95 @@
+{% extends "./admin/admin_base.html" %}
+{% block title %}Create/Edit Product{% endblock %}
+{% block adminbody %}
+    <div class="bg-white" style="width: 50%; margin: auto;">
+        <form method="post" enctype="multipart/form-data">
+             <div class="row">
+                {% if create_product_form %}
+                    {% for errors in create_product_form.errors.values() %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for error in errors %}
+                                {{ error }}<br>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                {% elif edit_product_form %}
+                    {% for errors in edit_product_form.errors.values() %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for error in errors %}
+                                {{ error }}<br>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {{ create_product_form.hidden_tag() if create_product_form else '' }}
+            {{ edit_product_form.hidden_tag() if edit_product_form else '' }}
+            <h2 class="text-center mb-4">
+                {% if create_product_form %}
+                    Create Product
+                {% elif edit_product_form %}
+                    Edit Product
+                {% endif %}
+            </h2>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    {{ create_product_form.name.label(class="form-label") if create_product_form else '' }}
+                    {{ create_product_form.name(class="form-control", placeholder="Product name") if create_product_form else '' }}
+                    {{ edit_product_form.name.label(class="form-label") if edit_product_form else '' }}
+                    {{ edit_product_form.name(class="form-control", placeholder="Product name") if edit_product_form else '' }}
+                </div>
+                <div class="col-md-6">
+                    {{ create_product_form.price.label(class="form-label") if create_product_form else '' }}
+                    {{ create_product_form.price(class="form-control", placeholder="Product price") if create_product_form else '' }}
+                    {{ edit_product_form.price.label(class="form-label") if edit_product_form else '' }}
+                    {{ edit_product_form.price(class="form-control", placeholder="Product price") if edit_product_form else '' }}
+                </div>
+            </div>
+            <div class="mb-3">
+                {{ create_product_form.description.label(class="form-label") if create_product_form else '' }}
+                {{ create_product_form.description(class="form-control", placeholder="Product description") if create_product_form else '' }}
+                {{ edit_product_form.description.label(class="form-label") if edit_product_form else '' }}
+                {{ edit_product_form.description(class="form-control", placeholder="Product description") if edit_product_form else '' }}
+            </div>
+            <div class="mb-3">
+                {{ create_product_form.image_url.label(class="form-label") if create_product_form else '' }}
+                {{ create_product_form.image_url(class="form-control", placeholder="Product image") if create_product_form else '' }}
+                {{ edit_product_form.image_url.label(class="form-label") if edit_product_form else '' }}
+                {{ edit_product_form.image_url(class="form-control", placeholder="Product image") if edit_product_form else '' }}
+            </div>
+            <div class="mb-3">
+                {{ create_product_form.category.label(class="form-label") if create_product_form else '' }}
+                {{ create_product_form.category(class="form-select", placeholder="Product category") if create_product_form else '' }}
+                {{ edit_product_form.category.label(class="form-label") if edit_product_form else '' }}
+                {{ edit_product_form.category(class="form-select", placeholder="Product category") if edit_product_form else '' }}
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    {{ create_product_form.quantity.label(class="form-label") if create_product_form else '' }}
+                    {{ create_product_form.quantity(class="form-control", placeholder="Product quantity") if create_product_form else '' }}
+                    {{ edit_product_form.quantity.label(class="form-label") if edit_product_form else '' }}
+                    {{ edit_product_form.quantity(class="form-control", placeholder="Product quantity") if edit_product_form else '' }}
+                </div>
+                <div class="col-md-6">
+                    {{ create_product_form.brand.label(class="form-label") if create_product_form else '' }}
+                    {{ create_product_form.brand(class="form-control", placeholder="Product brand") if create_product_form else '' }}
+                    {{ edit_product_form.brand.label(class="form-label") if edit_product_form else '' }}
+                    {{ edit_product_form.brand(class="form-control", placeholder="Product brand") if edit_product_form else '' }}
+                </div>
+            </div>
+            <div class="mb-3">
+                {{ create_product_form.material.label(class="form-label") if create_product_form else '' }}
+                {{ create_product_form.material(class="form-control", placeholder="Product material") if create_product_form else '' }}
+                {{ edit_product_form.material.label(class="form-label") if edit_product_form else '' }}
+                {{ edit_product_form.material(class="form-control", placeholder="Product material") if edit_product_form else '' }}
+            </div>
+            <div class="mb-4">
+                {% if create_product_form %}
+                    {{ create_product_form.submit(class="btn btn-dark w-100", value="Create") }}
+                {% elif edit_product_form %}
+                    {{ edit_product_form.submit(class="btn btn-dark w-100", value="Edit") }}
+                {% endif %}
+            </div>
+        </form>
+    </div>
+{% endblock %}

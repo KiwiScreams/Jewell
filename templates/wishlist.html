@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Your Wishlist{% endblock %}
+{% block body %}
+<div class="container">
+    <h2 class="text-center mt-5 mb-5 text-white">Your Wishlist</h2>
+
+    {% if products %}
+    <div class="row d-flex flex-wrap justify-content-start gx-5 pt-5">
+        {% for product in products %}
+        <div class="col-md-3 col-sm-6 col-12 mb-5 product-card">
+            <div class="card card-h bg-black border text-white" style="width: 100%;">
+                <div class="image-container">
+                    <img src="/static/assets/uploads/{{ product.image_url }}"
+                         class="card-img-top product-img" alt="{{ product.name }}">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-price" id="formattedNumber">{{ product["price"] }}.00$</h4>
+                    <h6 class="card-title data-name mb-3"><i>{{ product["name"] }}</i></h6>
+                    <div class="d-flex align-items-center mb-3">
+                        <a href="/catalogue/{{ product['id'] }}" class="btn custom-btn" style="margin-right: 10px;">Detail</a>
+                        <form method="POST" action="/remove_from_wishlist/{{ product['id'] }}">
+                            <button type="submit" class="btn btn-outline-danger">
+                                <i class="fa-solid fa-heart text-danger" style="font-size: 22px;"></i> Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center text-white border rounded p-5 mt-5 mb-5">
+        No products in your wishlist.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,147 @@
+<nav class="navbar navbar-expand-lg container bg-black text-white">
+    <div class="container-fluid">
+        <div class="row w-100 align-items-center">
+            <div class="col-4 d-flex align-items-center">
+                <a class="navbar-brand" href="/">
+                    <img src="../../static/assets/root/images/core/logo.svg" class="logo" alt="Blueberry logo"/>
+                    <img src="../../static/assets/root/images/core/Jewell.svg" class="logo" alt="Blueberry logo"/>
+                </a>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+                        <li class="nav-item text-underline">
+                            <a class="nav-link text-white" href="/">Home</a>
+                        </li>
+                        <li class="nav-item dropdown text-underline">
+                            <a
+                                    class="nav-link dropdown-toggle text-white"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                                Catalogue
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                <li><a class="dropdown-item" href="/catalogue?category=Earrings">Earrings <img
+                                        src="../../static/assets/root/images/earrings.png"></a></li>
+                                <li><a class="dropdown-item" href="/catalogue?category=Rings">Rings <img
+                                        src="../../static/assets/root/images/wedding.png"></a></li>
+                                <li><a class="dropdown-item" href="/catalogue?category=Bracelets">Bracelets &
+                                    Bangles <img src="../../static/assets/root/images/bracelet.png"></a></li>
+                                <li><a class="dropdown-item" href="/catalogue?category=Watches">Watches <img
+                                        src="../../static/assets/root/images/wristwatch.png"></a></li>
+                                <li><a class="dropdown-item" href="/catalogue?category=Brooches">Brooches
+                                    <img src="../../static/assets/root/images/brooch.png"></a></li>
+                                <li><a class="dropdown-item" href="/catalogue?category=Gift">Gift Sets <img
+                                        src="../../static/assets/root/images/set.png"></a></li>
+                                <li><a class="dropdown-item" href="/catalogue">All</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item text-underline">
+                            <a class="nav-link text-white" href="/gift-card">Gift card</a>
+                        </li>
+                        <li class="nav-item dropdown text-underline">
+                            <a
+                                    class="nav-link dropdown-toggle text-white"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                            >
+                                Contacts
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="/contacts#about-us">About Us <img
+                                            src="../../static/assets/root/images/group.png"></a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/contacts#contact-us">Contact Us <img
+                                            src="../../static/assets/root/images/chat.png"></a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/contacts#branches">Branches
+                                        <img src="../../static/assets/root/images/office.png"/></a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/contacts#faq-section">FAQ
+                                        <img src="../../static/assets/root/images/faq.png"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" style="cursor: pointer; margin-left: 10px;">
+                            <i class="fa-solid fa-magnifying-glass rotate" id="searchBtn"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% if not current_user.is_authenticated %}
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <div class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link custom-btn btn register-1 mx-2" href="/signup">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn register-1 custom-btn" href="/signin">Sign In</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-4 d-flex justify-content-center align-items-center">
+                <div class="collapse navbar-collapse justify-content-end">
+            <div class="nav-item dropdown d-flex">
+                <a class="nav-link dropdown-toggle d-flex align-items-center"
+                   href="#"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false"
+                >
+                    <div class="user-icon"
+                         style="background-image: url(../../static/assets/uploads/{{ current_user.user_image }});"></div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                    {% if current_user.role == "Admin" %}
+                    <li>
+                        <a class="dropdown-item" href="/admin">Admin Dashboard &nbsp;
+                            <i class="fa-solid fa-user-tie"></i>
+                        </a>
+                     </li>
+                    {% else %}
+                    <li>
+                        <a class="dropdown-item" href="/user/{{current_user.id}}">Profile &nbsp;
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/wishlist">Wishlist &nbsp;
+                            <i class="fa-regular fa-heart"></i>
+                        </a>
+                     </li>
+                    <li>
+                        <a class="dropdown-item" href="/cart">Cart &nbsp;
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                     </li>
+                    <li>
+                        <a class="dropdown-item" href="/user/{{current_user.id}}/gift_cards">Gift Cards &nbsp;
+                            <i class="fa-solid fa-gift"></i>
+                        </a>
+                     </li>
+                    {% endif %}
+                    <li>
+                        <a class="dropdown-item" href="/logout">Log Out &nbsp;
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

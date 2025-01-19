@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+{% block body %}
+<div class="container">
+    <h2 class="text-center mt-5 mb-5 text-white">Your Cart</h2>
+    {% if cart_items %}
+    <div class="row d-flex flex-wrap justify-content-start gx-5 pt-5">
+        {% for item in cart_items %}
+        <div class="col-md-3 col-sm-6 col-12 mb-5 product-card">
+            <div class="card card-h bg-black border text-white" style="width: 100%;">
+                <div class="image-container">
+                    <img src="/static/assets/uploads/{{ item.product.image_url }}"
+                         class="card-img-top product-img" alt="{{ item.product.name }}">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-price" id="formattedNumber">{{ item.product.price }}.00$</h4>
+                    <h6 class="card-title data-name mb-3"><i>{{ item.product.name }}</i></h6>
+                    <p class="card-text">Quantity: {{ item.quantity }}</p>
+                    <div class="d-flex justify-content-between mt-1">
+                    <form method="POST" action="{{ url_for('update_cart_quantity', product_id=item.product.id) }}">
+                        <div class="d-flex align-items-center">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="custom-input" style="width: 60px;" required placeholder="Enter quantity" />/{{item.product.quantity}}
+                            <button type="submit" class="btn btn-outline-primary" style="margin-left: 10px;">
+                                Update
+                            </button>
+                        </div>
+                    </form>
+                    <form method="POST" action="{{ url_for('remove_from_cart', product_id=item.product.id) }}">
+                        <button type="submit" class="btn btn-outline-danger">
+                            Remove
+                        </button>
+                    </form>
+                    </div>
+                    <a class="btn custom-btn mt-2" style="width: 100%;" href="/catalogue/{{item.product.id}}">
+                            Detail
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <h4 class="text-white mb-5">Total Price: {{ total_price }}.00$</h4>
+        <a href="/checkout" class="btn custom-btn">Order now!</a>
+    </div>
+    {% else %}
+    <div class="text-center text-white border rounded p-5 mt-5 mb-5">
+        No products in your cart.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

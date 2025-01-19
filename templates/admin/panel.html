@@ -1,0 +1,28 @@
+{% extends "./admin/admin_base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block adminbody %}
+    <div class="container mt-5">
+        <h1 class="text-center text-dark mb-4">Welcome to the Admin Dashboard</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="card shadow-lg p-4 mb-4 bg-light rounded">
+                    <h4 class="card-title">What You Can Do</h4>
+                    <ul>
+                        <li>🛒 Manage Products and Categories</li>
+                        <li>📈 View Detailed Analytics</li>
+                        <li>💬 Approve Customer Testimonials</li>
+                        <li>📦 Track Orders and Fulfill Requests</li>
+                        <li>⚙️ Configure Site Settings and Preferences</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-info text-center mt-5" role="alert">
+            <h5 class="alert-heading">Important Information</h5>
+            <p>Be sure to check the "Orders" section regularly to fulfill customer requests and keep your inventory up to date.</p>
+        </div>
+        <p class="text-center text-muted mt-4">
+            If you need assistance, please refer to the support documentation or contact our technical team.
+        </p>
+    </div>
+{% endblock %}

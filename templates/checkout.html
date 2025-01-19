@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+{% block body %}
+<div class="container mt-5" style="color: #fff; width: 60%;">
+    <h2 class="text-center">Checkout</h2>
+    <form method="POST" action="{{ url_for('checkout') }}">
+        {{ form.hidden_tag() }}
+        <div class="checkout-details mb-4">
+            <h3 class="text-center">Billing Information</h3>
+            <div class="form-group mb-3">
+                {{ form.address.label(class="text-white") }}
+                {{ form.address(class="custom-input", placeholder="Enter your shipping address") }}
+            </div>
+            <div class="form-group mb-3">
+                {{ form.city.label(class="text-white") }}
+                {{ form.city(class="custom-input", placeholder="Enter your city") }}
+            </div>
+            <div class="form-group mb-3">
+                {{ form.zip_code.label(class="text-white") }}
+                {{ form.zip_code(class="custom-input", placeholder="Enter your zip code") }}
+            </div>
+        </div>
+        <div class="payment-details">
+            <h3 class="text-center">Payment Information</h3>
+            <div class="form-group mb-3">
+                {{ form.card_number.label(class="text-white") }}
+                {{ form.card_number(class="custom-input", placeholder="Enter your card number") }}
+            </div>
+            <div class="form-group mb-3">
+                {{ form.cvv.label(class="text-white") }}
+                {{ form.cvv(class="custom-input", placeholder="Enter your CVV") }}
+            </div>
+            <div class="payment-methods d-flex" style="align-items: center; gap: 20px;">
+                <div class="payment-method">
+                    <img src="./static/assets/root/images/images (1).png" alt="Credit Card" style="width: 40px;">
+                    <p>Credit Card</p>
+                </div>
+                <div class="payment-method">
+                    <img src="./static/assets/root/images/images.png" alt="PayPal" style="width: 40px;">
+                    <p>PayPal</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+              {{ form.submit(class="btn custom-btn w-100") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

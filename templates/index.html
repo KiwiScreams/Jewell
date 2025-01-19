@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="bg-black text-white">
+   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../static/assets/root/images/jewelry-black-background.png" class="d-block w-100" alt="Elegant Jewelry">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Exquisite Jewelry Collections</h5>
+                <p>Discover the finest selection of handcrafted earrings, rings, and bracelets, designed to make you
+                    shine.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../../static/assets/root/images/360_F_911072849_89aGVneMwimHjhWlhWu1vKDd9EbEqTtL.jpg"
+                 class="d-block w-100"
+                 alt="Timeless Engagement Rings">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Timeless Engagement Rings</h5>
+                <p>Find the perfect ring for your special moment, featuring diamond and gemstone settings that will
+                    last a lifetime.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../../static/assets/root/images/innerbanner-jewelry-1.jpg" class="d-block w-100"
+                 alt="Luxury Watches & Bracelets">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Luxury Watches & Bracelets</h5>
+                <p>Elevate your style with our curated collection of luxury watches and bracelets, perfect for any
+                    occasion.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <div>
+                    <h2 class="mb-5 fade-in">Discover The Exceptional Jewellery With Us</h2>
+                    <p class="fade-in">Whether you're searching for the perfect engagement ring, a statement necklace, or a timeless
+                        bracelet, we offer an exquisite selection of designs that cater to all tastes and occasions.
+                        <br>
+                        <br>
+                        Join us on a journey of elegance and luxury—where every piece tells a story, and every purchase
+                        becomes part of your own unique narrative.</p>
+                </div>
+            </div>
+            <div class="col-md-6 fade-in">
+                <img src="../../static/assets/root/images/image 56.png" class="d-block image-home" alt="Our Craftsmanship">
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <img src="../../static/assets/root/images/image 61.png" class="d-block image-home fade-in" alt="Luxury Jewelry">
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <div>
+                    <h2 class="mb-5 fade-in">Sterling Designer Ring </h2>
+                    <p class="fade-in">The Silver Sterling Designer Ring is a timeless piece of craftsmanship, beautifully
+                        designed
+                        for those who appreciate elegance and style.
+                        <br>
+                        <br>
+                        Whether you're treating yourself or gifting it to a loved one, the silver Sterling
+                        Designer
+                        Ring offers both beauty and value, making it a must-have accessory for your jewelry collection.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                <div>
+                    <h2 class="mb-5 fade-in">Silver Round Designer Bracelet For Women </h2>
+                    <p class="fade-in">This bracelet is a perfect gift for someone special or a luxurious treat for yourself.
+                        With its
+                        secure clasp and comfortable fit, it's designed to be worn all day, adding a touch of class and
+                        beauty to any occasion. <br>
+                        <br>Make a lasting impression with this elegant silver bracelet that radiates
+                        understated luxury and style.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="../../static/assets/root/images/Silver-Bracelet-PNG-Free-Image-removebg-preview 1.png"
+                     class="d-block image-home fade-in"
+                     alt="Personalized Jewelry">
+            </div>
+        </div>
+    </div>
+    <div class="container pb-5 px-5 fade-in">
+        <p class="text-center">
+            Introducing our Silver Round Designer Bracelet, a perfect fusion of simplicity and luxury. Crafted from
+            premium 925 sterling silver, this bracelet boasts a sleek, polished finish that catches the light
+            beautifully. The unique round design adds an elegant touch, making it the ideal accessory for any occasion.
+            Whether you're dressing up for a formal event or adding a touch of sophistication to your everyday look,
+            this versatile bracelet enhances any outfit effortlessly. A timeless piece that stands out in both casual
+            and formal settings, embodying understated elegance and refined style.
+        </p>
+    </div>
+
+
+{% if testimonials %}
+<section class="testimonials py-5 bg-black fade-in">
+    <div class="container">
+        <h2 class="text-center mb-4">What Our Customers Are Saying</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for testimonial in testimonials %}
+                    <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 text-center">
+                                <div class="testimonial-card p-4 bg-black shadow-sm rounded">
+                                    <img src="{{ url_for('static', filename='assets/uploads/' + testimonial.user.user_image) }}"
+                                         class="rounded-circle mb-3 testimonial" alt="Customer">
+                                    <h5 class="mb-3">{{ testimonial.user.firstname }} {{ testimonial.user.lastname }}</h5>
+                                    <p class="text-white">{{ testimonial.content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+</div>
+<script src="{{ url_for('static', filename='scripts/fadeIn.js') }}"></script>
+{% endblock %}

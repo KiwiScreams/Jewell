@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Catalogue{% endblock %}
+{% block body %}
+<div class="container">
+    <h2 class="text-center mt-5 mb-5 text-white">
+        Explore Our Jewelry Collection - Elegance for Every Occasion
+    </h2>
+    <p class="text-center mb-5 text-white">
+        At JewelConnect, we offer a stunning range of meticulously crafted jewelry
+        pieces to complement your style. Whether you're looking for an everyday accessory
+        or a statement piece for a special event, we have something to suit every taste.
+    </p>
+    {% if search_query %}
+        <h5 class="text-center mb-4 text-white">Search Results for: <strong>"{{ search_query }}"</strong></h5>
+    {% endif %}
+    {% if category %}
+        <h5 class="text-center mb-4 text-white">Showing products in category: <strong>{{ category }}</strong></h5>
+    {% endif %}
+    {% if products %}
+    <div class="row d-flex flex-wrap justify-content-start gx-5 pt-5">
+        {% for product in products %}
+        <div class="col-md-3 col-sm-6 col-12 mb-5 product-card">
+            <div class="card card-h bg-black border text-white fade-in" style="width: 100%;">
+                <div class="image-container">
+                    <img src="../../static/assets/uploads/{{ product.image_url }}"
+                         class="card-img-top product-img" alt="{{ product.name }}">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-price" id="formattedNumber">{{ product["price"] }}.00$</h4>
+                    <h6 class="card-title data-name mb-3"><i>{{ product["name"] }}</i></h6>
+                    <div class="d-flex align-items-center mb-3">
+                        <a href="/catalogue/{{ product['id'] }}" class="btn custom-btn" style="margin-right: 10px;">Detail</a>
+                        {% if not current_user.role == "Admin" %}
+                        {% if product["id"] in wishlist_items %}
+                            <form method="POST" action="/remove_from_wishlist/{{ product['id'] }}">
+                                <button type="submit" style="background: transparent; border: none;">
+                                    <i class="fa-solid fa-heart text-danger" style="font-size: 22px;"></i>
+                                </button>
+                            </form>
+                        {% else %}
+                            <form method="POST" action="/wishlist/{{ product['id'] }}">
+                                <button type="submit" style="background: transparent; border: none;">
+                                    <i class="fa-regular fa-heart text-white" style="font-size: 22px;"></i>
+                                </button>
+                            </form>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center text-white border rounded p-5 mt-5 mb-5">
+        {% if search_query %}
+            No products found for your search: <strong>"{{ search_query }}"</strong>
+        {% else %}
+            No products available at the moment.
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+<script src="{{ url_for('static', filename='scripts/fadeIn.js') }}"></script>
+{% endblock %}

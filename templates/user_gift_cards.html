@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Your Gift Cards{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center mt-5 mb-5 text-white">Your Gift Cards</h2>
+    <h3 class="text-center text-white mt-5">Gift Cards You Created</h3>
+    {% if created_gift_cards %}
+    <div class="row d-flex flex-wrap justify-content-start gx-5 pt-5">
+        {% for gift_card in created_gift_cards %}
+        <div class="col-md-3 col-sm-6 col-12 mb-5 product-card">
+            <div class="card card-h bg-black border text-white" style="width: 100%; padding-top: 0;">
+                <div class="card-body">
+                    <h4 class="card-price" id="formattedNumber">${{ gift_card.amount }}.00</h4>
+                    <h6 class="card-title data-name mb-3"><i>{{ gift_card.message }}</i></h6>
+                    <p class="card-text">
+                        <strong>Sender:</strong> {{ gift_card.sender.firstname }} {{ gift_card.sender.lastname }} <br>
+                        <strong>Recipient:</strong> {{ gift_card.recipient_email }} <br>
+                        <strong>Gift Card Code:</strong> {{ gift_card.code }} <br>
+                        <strong>Status:</strong> {% if gift_card.is_sent %} Sent {% else %} Not Sent {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center text-white border rounded p-5 mt-5 mb-5">
+        No gift cards created by you.
+    </div>
+    {% endif %}
+    <h3 class="text-center text-white mt-5">Gift Cards For You</h3>
+    {% if received_gift_cards %}
+    <div class="row d-flex flex-wrap justify-content-start gx-5 pt-5">
+        {% for gift_card in received_gift_cards %}
+        <div class="col-md-3 col-sm-6 col-12 mb-5 product-card">
+            <div class="card card-h bg-black border text-white" style="width: 100%; padding-top: 0;">
+                <div class="card-body">
+                    <h4 class="card-price">${{ gift_card.amount }}.00</h4>
+                    <h6 class="card-title data-name mb-3"><i>{{ gift_card.message }}</i></h6>
+                    <p class="card-text">
+                        <strong>Sender:</strong> {{ gift_card.sender.firstname }} {{ gift_card.sender.lastname }} <br>
+                        <strong>Recipient:</strong> {{ gift_card.recipient_email }} <br>
+                        <strong>Gift Card Code:</strong> {{ gift_card.code }} <br>
+                        <strong>Status:</strong> {% if gift_card.is_sent %} Sent {% else %} Not Sent {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center text-white border rounded p-5 mt-5 mb-5">
+        No gift cards for you.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

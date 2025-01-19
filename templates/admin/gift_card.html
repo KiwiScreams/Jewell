@@ -1,0 +1,55 @@
+{% extends "./admin/admin_base.html" %}
+
+{% block title %}Gift Cards{% endblock %}
+
+{% block adminbody %}
+<div class="container" style="width: 63%;">
+    <h2 class="text-center mb-5" style="color: #2f3640;">Gift Cards</h2>
+    <div class="mb-4" style="width: fit-content; margin: auto;">
+        <a href="{{ url_for('admin_gift_cards', status='all') }}" class="btn btn-secondary">All</a>
+        <a href="{{ url_for('admin_gift_cards', status='used') }}" class="btn btn-secondary">Used</a>
+        <a href="{{ url_for('admin_gift_cards', status='unused') }}" class="btn btn-secondary">Unused</a>
+    </div>
+    {% if gift_cards %}
+    <div class="row">
+        {% for gift_card in gift_cards %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Gift Card - ${{ gift_card.amount }}</h5>
+                    <p class="card-text">
+                        <strong>Ordered By:</strong> {{ gift_card.sender.firstname }} {{ gift_card.sender.lastname }}<br>
+                        <strong>Recipient's Email:</strong> {{ gift_card.recipient_email }}<br>
+                        <strong>Message:</strong> {{ gift_card.message }}<br>
+                        <strong>Code:</strong> <code>{{ gift_card.code }}</code><br>
+                        <strong>Status:</strong>
+                        {% if gift_card.is_sent %}
+                            <span class="badge badge-success">Used</span>
+                        {% else %}
+                            <span class="badge badge-warning">Unused</span>
+                        {% endif %}
+                    </p>
+                    <form method="POST" action="{{ url_for('toggle_gift_card_status', gift_card_id=gift_card.id) }}">
+                        <button type="submit" class="btn
+                            {% if gift_card.is_sent %}
+                                btn-danger
+                            {% else %}
+                                btn-success
+                            {% endif %}">
+                            {% if gift_card.is_sent %}
+                                Mark as Unused
+                            {% else %}
+                                Mark as Used
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-center">No gift cards available.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,619 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    transition: 0.3s;
+}
+body.main-base
+{
+    background: #000;
+}
+.navbar .dropdown-menu img
+{
+    width: 30px;
+    height: 30px;
+}
+.navbar
+{
+    background-color: #fff;
+}
+.navbar .text-underline
+{
+    position: relative;
+}
+.navbar .text-underline::after
+{
+    content: "";
+    position: absolute;
+    height: 3px;
+    background-color: #fff;
+    width: 0;
+    left: 0;
+    bottom: 0px;
+    transition: all 0.5s ease;
+}
+.navbar .text-underline:hover::after
+{
+    width: 100%;
+}
+header
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    transition: top 0.3s ease;
+}
+.logo
+{
+    width: 50px;
+}
+.tibisi-logo
+{
+    height: 50px;
+}
+::-webkit-scrollbar
+{
+    display: block;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color: #000;
+}
+::-webkit-scrollbar-track
+{
+    background-color: white;
+}
+.register li
+{
+    width: 90px;
+    display: block;
+}
+footer
+{
+    background-position: center;
+    background-size: cover;
+}
+footer a
+{
+    text-decoration: none;
+}
+.text-2e
+{
+    color: #e2e2e2;
+}
+.text-2e:hover
+{
+    color: #727272;
+}
+.custom-btn
+{
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: transparent;
+}
+.custom-btn:hover
+{
+    color: #000;
+    background-color: #fff;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in.visible
+{
+    opacity: 1;
+    transform: translateY(0);
+}
+.custom-input
+{
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 6px;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+.custom-input option
+{
+    color: #000;
+}
+.fab
+{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+.fab:hover
+{
+    border: 3px solid #fff;
+}
+.bg-black
+{
+    background: black;
+}
+.register-1
+{
+    color: #fff;
+}
+.register-1:hover
+{
+    color: #000;
+}
+.carousel-item
+{
+    height: 380px;
+    overflow: hidden;
+}
+.carousel-caption
+{
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), #000);
+    border-radius: 10px;
+}
+.testimonial
+{
+    width: 50px;
+    height: 50px;
+}
+.testimonials
+{
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    border-radius: 20px;
+    width: 85%;
+    margin: auto;
+}
+.card-h .product-img
+{
+    height: auto;
+    width: 180px;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    overflow: hidden;
+    transform: translateX(-50%);
+}
+.card.card-h .product-img img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.card.card-h
+{
+    padding-top: 160px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.card.card-h:hover
+{
+    box-shadow: 0 0 10px #fff;
+    z-index: 2;
+    transition: 0.5s;
+}
+.card.card-h:hover .product-img
+{
+    transform: scale(1.2);
+    transform: translateX(-60%);
+}
+.card.card-h:hover
+{
+    transform: perspective(500px) rotate3d(1, 1, 0, 10deg) skew(2deg, 0deg);
+    transition: 0.5s;
+}
+.search-container
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    width: 40%;
+    z-index: 11;
+    position: fixed;
+}
+.search-box
+{
+    position: absolute;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    background-color: #00000080;
+    box-shadow: 0 0 10px #000;
+}
+.search-container input
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+.search-container input:focus
+{
+    background: transparent;
+}
+.search-container input::placeholder
+{
+    color: #DCDCDC;
+}
+.search-container .fa-x:hover,
+.rotate:hover
+{
+    transform: rotate(30deg);
+    cursor: pointer;
+}
+.search-container button:hover
+{
+    border: 1px solid #fff;
+}
+#searchSection
+{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+#searchSection.show
+{
+    display: block;
+    opacity: 1;
+}
+#searchSection.end
+{
+    opacity: 0;
+}
+html, body
+{
+    scroll-behavior: smooth;
+}
+.drop-up
+{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background: red;
+}
+.eye
+{
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(0%, -50%);
+    color: #fff;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+{
+    -webkit-appearance: none;
+}
+.custom-file::-webkit-file-upload-button:hover
+{
+    background: linear-gradient(to right bottom, rgb(27, 18, 18), #000);
+}
+.upload-container
+{
+    margin: auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+}
+.upload
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #fff;
+    margin-bottom: 40px;
+}
+.custom-file::-webkit-file-upload-button
+{
+    background: linear-gradient(to right bottom, #000, rgb(27, 18, 18));
+    color: #fff;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    padding: 2px 8px;
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: -10px;
+    right: -10px;
+}
+.image-preview
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    background: black;
+}
+.upload .button
+{
+    position: absolute;
+    bottom: -20px;
+    right: -2px;
+    z-index: 10;
+    background: #000;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid #fff;
+}
+.upload .button:hover
+{
+    color: #000;
+    background: #fff;
+}
+.user-icon
+{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #fff;
+}
+body
+{
+    overflow-x: hidden;
+}
+.login
+{
+    background-position: right;
+    background-size: cover;
+    backdrop-filter: blur(20px);
+}
+.comment-img
+{
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
+.custom-comment
+{
+    padding-top: 8px;
+    height: 120px;
+}
+.testimonials-panel
+{
+    position: fixed;
+    top: 30%;
+    left: 0;
+    right: 0;
+    transform: transition(-50%, -50%);
+    width: 100%;
+}
+.testimonials-panel form
+{
+    background: #000;
+    padding: 80px 0;
+    width: 50%;
+    margin: auto;
+    border-radius: 10% 0 10% 0;
+    border: 3px solid #fff;
+    position: relative;
+    box-shadow: 0 0 50px #000;
+}
+.testimonials-panel .fa-x
+{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.testimonials-panel
+{
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: testimonialPan 0.5s linear;
+}
+.testimonials-panel.hidden
+{
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+@keyframes testimonialPan
+{
+  from
+  {
+    top: 20%;
+    opacity: 0;
+  }
+  to
+  {
+    top: 30%;
+    opacity: 100%;
+  }
+}
+.admin-navbar
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 80px;
+    background-color: gray;
+    padding-top: 20px;
+    z-index: 1000;
+    border-radius: 0 0 50px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.admin-navbar .navbar-nav
+{
+    list-style-type: none;
+    padding-left: 0;
+}
+.admin-navbar .nav-item
+{
+    margin-bottom: 15px;
+}
+.admin-navbar .nav-link
+{
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.admin-navbar .nav-link:hover
+{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.admin-navbar .dropdown-menu
+{
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.admin-navbar .dropdown-item
+{
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+.admin-navbar .dropdown-item:hover
+{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.admin-navbar .navbar .dropdown-toggle::after
+{
+    display: none;
+}
+.admin-navbar .nav-item.active .nav-link
+{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.text-area
+{
+    height: 100px;
+}
+.container-user
+{
+    width: 80%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    overflow: hidden;
+}
+.profile-header
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.profile-header img
+{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+}
+.profile-header h1
+{
+    margin: 0;
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.profile-header p
+{
+    font-size: 1.2rem;
+    color: #777;
+}
+.profile-details
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.profile-details div
+{
+    background-color: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.profile-details h2
+{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+.profile-details p
+{
+    font-size: 1.1rem;
+    color: #666;
+}
+
+
+.heading
+{
+  font-size: 25px;
+  margin-right: 25px;
+}
+.fa
+{
+  font-size: 25px;
+}
+.checked
+{
+  color: orange;
+}
+.side
+{
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+.middle
+{
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+.right
+{
+  text-align: right;
+}
+.row:after
+{
+  content: "";
+  display: table;
+  clear: both;
+}
+.bar-container
+{
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+.bar-5 {width: 60%; height: 18px; background-color: #04AA6D;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}

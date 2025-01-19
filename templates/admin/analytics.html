@@ -1,0 +1,101 @@
+{% extends "./admin/admin_base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block adminbody %}
+<div class="container" style="margin: auto; width: 50%;">
+    <h2 class="text-center mb-5" style="color: #2f3640;">Admin Analytics Dashboard</h2>
+
+     <div class="rating-container text-center mt-5 mb-5">
+        <h2 class="section-title">User Rating</h2>
+        <div class="star-rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+        </div>
+        <p>4.1 average based on 254 reviews.</p>
+        <hr style="border: 3px solid #f1f1f1">
+        <div class="rating-bars">
+            <div class="rating-bar">
+                <div class="side">5 star</div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar bar-5"></div>
+                    </div>
+                </div>
+                <div class="side right">150</div>
+            </div>
+            <div class="rating-bar">
+                <div class="side">4 star</div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar bar-4"></div>
+                    </div>
+                </div>
+                <div class="side right">63</div>
+            </div>
+            <div class="rating-bar">
+                <div class="side">3 star</div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar bar-3"></div>
+                    </div>
+                </div>
+                <div class="side right">15</div>
+            </div>
+            <div class="rating-bar">
+                <div class="side">2 star</div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar bar-2"></div>
+                    </div>
+                </div>
+                <div class="side right">6</div>
+            </div>
+            <div class="rating-bar">
+                <div class="side">1 star</div>
+                <div class="middle">
+                    <div class="bar-container">
+                        <div class="bar bar-1"></div>
+                    </div>
+                </div>
+                <div class="side right">20</div>
+            </div>
+        </div>
+    </div>
+    <div class="stat-container mt-5">
+        <h3 class="section-title text-center">Gender Breakdown</h3>
+        <div class="justify-content-between d-flex text-center">
+            <div class="mb-4">
+                <div class="stat-card bg-gradient-primary">
+                    <h5 class="stat-title">Male: {{ gender_percentages['Male'] }}%</h5>
+                </div>
+            </div>&ensp;&ensp;&ensp;
+            <div class="mb-4">
+                <div class="stat-card bg-gradient-female">
+                    <h5 class="stat-title">Female: {{ gender_percentages['Female'] }}%</h5>
+                </div>
+            </div>&ensp;&ensp;&ensp;
+            <div class="mb-4 d-flex">
+                <div class="stat-card bg-gradient-other">
+                    <h5 class="stat-title">Other: {{ gender_percentages['Other'] }}%</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="stat-container mt-5">
+        <h3 class="section-title text-center mt-5">Country Breakdown</h3>
+        <div class="justify-content-center text-center" style="width: fit-content; margin: auto;">
+            {% for country, percentage in country_percentages.items() %}
+                <div class="mb-4">
+                    <h5 class="stat-title d-flex">{{ country }}: {{ percentage }}%</h5>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div style="margin: auto; width: fit-content;">
+
+<img src="../../static/assets/root/images/newplot.png">
+</div>
+{% endblock %}

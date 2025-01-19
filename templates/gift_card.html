@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Gift Card{% endblock %}
+
+{% block body %}
+<div class="container text-center text-white">
+    <h2 class="text-center mt-5 mb-5 text-white">Give the Gift of Choice</h2>
+    <p>Gift cards are the perfect way to let someone choose exactly what they want. Select an amount, personalize it, and send it instantly!</p>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert alert-success mt-3">
+            {% for category, message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+    <form method="POST">
+        {{ gift_card_form.hidden_tag() }}
+
+        <div class="gift-card-selection mb-4">
+            {{ gift_card_form.amount.label(class="form-label") }}
+            {{ gift_card_form.amount(class="custom-input") }}
+        </div>
+
+        <div class="gift-card-message mb-4">
+            {{ gift_card_form.message.label(class="form-label") }}
+            {{ gift_card_form.message(class="custom-input custom-comment", rows="4", placeholder="Your message...") }}
+        </div>
+
+        <div class="recipient-email mb-4">
+            {{ gift_card_form.email.label(class="form-label") }}
+            {{ gift_card_form.email(class="custom-input", placeholder="Enter recipient's email") }}
+        </div>
+
+       <div class="col-md-6 mx-auto mt-4">
+           {{ gift_card_form.submit(class="custom-btn w-100 p-2 rounded") }}
+       </div>
+    </form>
+
+    <div class="how-it-works mt-4">
+        <h3>How it Works</h3>
+        <p>1. Select your gift card amount.<br>2. Add a personalized message.<br>3. Enter the recipient's email.<br>4. Send or schedule the delivery.</p>
+    </div>
+</div>
+
+{% endblock %}

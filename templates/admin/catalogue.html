@@ -1,0 +1,33 @@
+{% extends "./admin/admin_base.html" %}
+{% block title %}Catalogue{% endblock %}
+{% block adminbody %}
+<div class="container" style="margin: auto; width: 63%;">
+    <h2 class="text-center mb-5" style="color: #2f3640;">Admin Catalogue</h2>
+    {% if products %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100 shadow-sm border-light">
+                <div class="image" style="width: 140px; height: 140px; overflow: hidden; margin: auto;">
+                    <img src="../../static/assets/uploads/{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}" style="width: 100%; height: 100%;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-truncate">{{ product["name"] }}</h5>
+                    <p class="card-text text-muted">{{ product["price"] }}.00$</p>
+                    <div class="d-flex justify-content-between" style="width: fit-content; gap: 10px; margin: auto;">
+                            <a href="/admin/catalogue/{{ product['id'] }}" class="btn btn-primary">Detail</a>
+                            <a href="/admin/edit_product/{{ product['id'] }}" class="btn btn-warning text-white">Edit</a>
+                            <a href="/admin/delete_product/{{ product['id'] }}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center text-muted p-5 mt-5 mb-5">
+        No products available at the moment.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
